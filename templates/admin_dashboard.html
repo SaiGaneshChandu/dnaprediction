@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Admin Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#667eea,#764ba2);
+padding:20px;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+background:white;
+border-radius:18px;
+box-shadow:0 18px 45px rgba(0,0,0,0.25);
+overflow:hidden;
+}
+
+.header{
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+color:white;
+padding:28px;
+text-align:center;
+}
+
+.top-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:28px;
+background:linear-gradient(135deg,#f8fafc,#e2e8f0);
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 28px;
+border:none;
+border-radius:10px;
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+transition:transform 0.2s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.home{background:#10b981;}
+.prediction{background:#22c55e;}
+.report{background:#3b82f6;}
+.users{background:#f59e0b;}
+.stats{background:#8b5cf6;}
+
+.logout{background:#ef4444;}
+
+.section{
+padding:35px;
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
+.section h3{
+color:#1e293b;
+font-size:26px;
+margin-bottom:28px;
+border-bottom:4px solid #6366f1;
+padding-bottom:10px;
+}
+
+.stat-box{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.stat-card{
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+padding:25px;
+border-radius:12px;
+flex:1;
+min-width:220px;
+text-align:center;
+box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+
+.stat-number{
+font-size:42px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+input{
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+margin:6px;
+width:calc(33% - 12px);
+box-sizing:border-box;
+}
+
+.submit-btn{
+background:#6366f1;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+font-weight:600;
+}
+
+.table-container{
+margin-top:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#1e293b;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.password-hidden{
+background:#f3f4f6;
+padding:5px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.action-btn{
+padding:8px 16px;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+margin:2px;
+font-size:14px;
+}
+
+.edit-btn{background:#22c55e;}
+.delete-btn{background:#ef4444;}
+
+select{
+padding:8px;
+border-radius:6px;
+}
+</style>
+
+<script>
+
+let editingRowIndex=-1;
+
+function showSection(id){
+document.querySelectorAll('.section').forEach(sec=>{
+sec.classList.remove('active');
+});
+document.getElementById(id).classList.add('active');
+}
+
+function editUser(rowIndex,username,email,password){
+const row = document.querySelectorAll('#users table tr')[rowIndex+1];
+row.dataset.originalUsername = username;
+
+row.cells[1].innerHTML = `<input type="text" value="${username}" id="editUser_${rowIndex}">`;
+row.cells[2].innerHTML = `<input type="email" value="${email}" id="editEmail_${rowIndex}">`;
+row.cells[3].innerHTML = `<input type="text" value="${password}" id="editPass_${rowIndex}">`;
+
+row.cells[5].innerHTML = `
+<button class="action-btn edit-btn" onclick="updateUser(${rowIndex})">Update</button>
+<button class="action-btn delete-btn" onclick="location.reload()">Cancel</button>
+`;
+}
+
+function updateUser(rowIndex){
+const username = document.getElementById(`editUser_${rowIndex}`).value;
+const email = document.getElementById(`editEmail_${rowIndex}`).value;
+const password = document.getElementById(`editPass_${rowIndex}`).value;
+
+const row = document.querySelectorAll('#users table tr')[rowIndex+1];
+const oldUsername = row.dataset.originalUsername;
+
+const form = document.createElement("form");
+form.method = "POST";
+form.action = "/edit-user/?section=users";
+
+const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+form.innerHTML = `
+<input type="hidden" name="csrfmiddlewaretoken" value="${csrf}">
+<input type="hidden" name="old_username" value="${oldUsername}">
+<input type="hidden" name="username" value="${username}">
+<input type="hidden" name="email" value="${email}">
+<input type="hidden" name="password" value="${password}">
+`;
+
+document.body.appendChild(form);
+form.submit();
+}
+
+window.onload=function(){
+showSection("{{ active_section|default:'home' }}");
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h2>🔐 Admin Dashboard</h2>
+<p>Welcome, {{ user }}! 👋</p>
+</div>
+
+<!-- ✅ 5 BUTTONS TOTAL -->
+<div class="top-buttons">
+<button class="btn home" onclick="showSection('home')">🏠 Home</button>
+<button class="btn prediction" onclick="showSection('predict')">🔬 Prediction</button>
+<button class="btn report" onclick="showSection('report')">📈 Reports ({{ total_reports|default:0 }})</button>
+<button class="btn users" onclick="showSection('users')">👥 Users ({{ total_users|default:0 }})</button>
+<a href="/logout/"><button class="btn logout">Logout</button></a>
+</div>
+
+<!-- HOME - FULL SECTION WITH HOVER EFFECTS -->
+<!-- COLOURFUL HOME SECTION -->
+<style>
+.stat-box {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.stat-card:hover::before {
+  left: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-12px) scale(1.06);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+  border-color: #f59e0b;
+}
+
+.stat-number {
+  font-size: 45px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.stat-card:hover .stat-number {
+  text-shadow: 0 0 20px rgba(255,255,255,1);
+  color: #ffd700;
+}
+
+.quick-actions {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 25px;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.quick-actions h4 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 24px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.quick-actions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quick-actions li {
+  background: rgba(255,255,255,0.95);
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1e293b;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+  backdrop-filter: blur(10px);
+}
+
+.quick-actions li:nth-child(1) { border-left-color: #22c55e; }
+.quick-actions li:nth-child(2) { border-left-color: #3b82f6; }
+.quick-actions li:nth-child(3) { border-left-color: #f59e0b; }
+.quick-actions li:nth-child(4) { border-left-color: #10b981; }
+.quick-actions li:nth-child(5) { border-left-color: #ef4444; }
+.quick-actions li:nth-child(6) { border-left-color: #8b5cf6; }
+.quick-actions li:nth-child(7) { border-left-color: #ec4899; }
+
+.quick-actions li:hover {
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+</style>
+
+<div id="home" class="section active">
+  <h3>🏠 Dashboard Home</h3>
+  
+  <!-- Colourful Stats Cards -->
+  <div class="stat-box">
+    <div class="stat-card">
+      <div class="stat-number">{{ total_users|default:0 }}</div>
+      <strong>Total Users</strong>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ total_reports|default:0 }}</div>
+      <strong>Total Reports</strong>
+    </div>
+  </div>
+
+  <!-- Colourful Quick Actions -->
+  <div class="quick-actions">
+    <h4>🔐 Admin Actions</h4>
+    <ul>
+      <li>👥 View users & reports</li>
+      <li>🔬 Test DNA/image predictions</li>
+      <li>📊 Check live statistics</li>
+      <li>➕ Create new users</li>
+      <li>✏️ Edit user details</li>
+      <li>🗑️ Delete users</li>
+      <li>🗑 Delete prediction reports</li>
+      <li>⚡ Real-time count updates</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Prediction - COLOURFUL VERSION -->
+<style>
+/* Prediction Form Colors */
+#predict form {
+  background: linear-gradient(135deg, #f0f9ff, #dbeafe);
+  padding: 30px;
+  border-radius: 20px;
+  border: 3px solid #3b82f6;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.3);
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#predict input[type="text"] {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  border: 2px solid #93c5fd;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#predict input[type="file"] {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#predict input:focus {
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59,130,246,0.3);
+}
+
+#predict button {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+}
+
+#predict button:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(59,130,246,0.5);
+}
+</style>
+
+<div id="predict" class="section">
+<h3>🔬 Prediction</h3>
+<form method="POST" action="/predict/" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="text" name="dna_text" placeholder="Enter DNA sequence (ATCG)">
+<input type="file" name="image" accept="image/*">
+<button class="submit-btn" type="submit">Predict Species ➡️</button>
+</form>
+</div>
+<!-- Reports - UPDATED WITH INPUT DATA -->
+<style>
+.reports-container {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.report-table th {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 18px 15px;
+  font-weight: 600;
+}
+
+.report-table td {
+  padding: 18px 15px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.report-table tr:hover {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  transform: scale(1.01);
+}
+
+.input-data {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  border-left: 4px solid #10b981;
+  word-break: break-all;
+  max-width: 200px;
+  font-family: 'Courier New', monospace;
+}
+
+.delete-report-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.delete-report-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+}
+</style>
+
+<div id="report" class="section">
+  <h3>📈 Reports</h3>
+  
+  <div class="reports-container">
+    <table class="report-table">
+      <tr>
+        <th>S.No</th>
+        <th>👤 Name</th>
+        <th>📥 Input Data</th>
+        <th>🎯 Result</th>
+        <th>📅 Date</th>
+        <th>🗑️ Action</th>
+      </tr>
+      {% for r in reports %}
+      <tr>
+        <td style="font-weight: 600;">{{ forloop.counter }}</td>
+        <td style="font-weight: 600;">{{ r.name }}</td>
+        <td class="input-data">{{ r.input }}</td>
+        <td style="font-size: 18px; font-weight: 700; color: #10b981;">{{ r.result }}</td>
+        <td style="color: #64748b; font-size: 14px;">{{ r.date }}</td>
+        <td>
+          <a href="/delete-report/{{ r.sno }}/?section=report" 
+             class="delete-report-btn" 
+             onclick="return confirm('Delete {{ r.name }} report?')">
+             Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<!-- Users -->
+<!-- Users - PERFECT STRUCTURE + LIGHT BLUE HOVER -->
+<div id="users" class="section">
+  <h3>👥 User Management</h3>
+
+ <!-- Create User Form - LIGHT BLUE BORDER -->
+<style>
+.create-user-box {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 3px solid #3b82f6;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.2);
+  margin-bottom: 25px;
+}
+
+.create-user-form {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  flex-wrap: wrap;
+  width: 100%;
+}
+</style>
+
+<div class="create-user-box">
+  <form method="POST" action="/create-user/?section=users" class="create-user-form">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username *" required 
+           style="width: 180px; padding: 12px; border-radius: 8px; border: 2px solid #3b82f6;">
+    <input type="email" name="email" placeholder="Email *" required 
+           style="width: 220px; padding: 12px; border-radius: 8px; border: 2px solid #3b82f6;">
+    <input type="password" name="password" placeholder="Password *" required 
+           style="width: 200px; padding: 12px; border-radius: 8px; border: 2px solid #3b82f6;">
+    <button type="submit" class="submit-btn" 
+            style="padding: 12px 24px; white-space: nowrap; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border: none;">
+      ➕ Create User
+    </button>
+  </form>
+</div>
+
+
+  <!-- ✅ PERFECT USERS TABLE -->
+  <div class="table-container" style="max-width: 1200px; margin: 0 auto;">
+    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+      <thead>
+        <tr style="background: linear-gradient(135deg, #1e293b, #334155);">
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">S.No</th>
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">Username</th>
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">Email</th>
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">Password</th>
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">Role</th>
+          <th style="color: white; padding: 18px; text-align: center; font-weight: 600;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr style="transition: all 0.3s ease; border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 18px; text-align: center; font-weight: 600; color: #1e293b;">{{ forloop.counter }}</td>
+          <td style="padding: 18px; text-align: center; font-weight: 500;">{{ u.username }}</td>
+          <td style="padding: 18px; text-align: center;">{{ u.email }}</td>
+          <td style="padding: 18px; text-align: center;">
+            <span class="password-hidden" onclick="alert('{{ u.password }}')" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 8px 12px; border-radius: 8px; cursor: pointer; border: 2px solid #e2e8f0; font-family: monospace; display: inline-block; transition: all 0.3s ease;">****</span>
+          </td>
+          <td style="padding: 18px; text-align: center;">
+            <select style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ddd; background: white;">
+              <option value="user" {% if u.role == "user" %}selected{% endif %}>User</option>
+              <option value="admin" {% if u.role == "admin" %}selected{% endif %}>Admin</option>
+            </select>
+          </td>
+          <td style="padding: 18px; text-align: center;">
+            <button class="action-btn" onclick="editUser({{ forloop.counter0 }}, '{{ u.username|escapejs }}','{{ u.email|escapejs }}','{{ u.password|escapejs }}')" style="background: #22c55e; padding: 10px 16px; margin: 2px; border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 600;">✏️ Edit</button>
+            <a href="/delete-user/{{ u.username }}/?section=users" style="background: #ef4444; padding: 10px 16px; margin: 2px; border-radius: 8px; color: white; text-decoration: none; font-weight: 600; display: inline-block;" onclick="return confirm('Delete {{ u.username }}?')">🗑️ Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ✅ LIGHT BLUE HOVER CSS -->
+  <style>
+  #users table tr {
+    transition: all 0.3s ease !important;
+  }
+  #users table tr:hover {
+    background: linear-gradient(135deg, #e0f2fe, #f0f9ff) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(59,130,246,0.2) !important;
+  }
+  #users table tr:hover td {
+    color: #1e40af !important;
+  }
+  #users .password-hidden:hover {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: white !important;
+    border-color: #3b82f6 !important;
+  }
+  </style>
+</div>
+

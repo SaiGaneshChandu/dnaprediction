@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DNA Classification System</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url("https://img.freepik.com/premium-photo/biotechnology-dna-structure-human-cell-biology-dna-strands-molecular-structure-science-background-3d-illustration_1962-2806.jpg?w=1380") no-repeat center center/cover;
+}
+
+/* dark overlay */
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+}
+
+/* center box */
+.box{
+    position:relative;
+    z-index:1;
+    background:rgba(255,255,255,0.95);
+    padding:40px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+h1{
+    margin-bottom:25px;
+}
+
+/* buttons */
+button{
+    width:180px;
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    color:white;
+    transition:0.3s;
+}
+
+.login-btn{background:linear-gradient(135deg,#4d96ff,#6bcB77);}
+.register-btn{background:linear-gradient(135deg,#ff6b6b,#ff9a44);}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.3);
+}
+
+/* ===== SCROLLING TITLE ===== */
+.scroll-title{
+    position:absolute;
+    top:10px;
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+}
+
+.scroll-text{
+    display:inline-block;
+
+    font-size:60px;
+    font-weight:900;
+    letter-spacing:4px;
+
+    /* clean colorful gradient */
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff7a00,
+        #ffd000,
+        #00c853,
+        #00b0ff,
+        #2962ff,
+        #7b1fa2,
+        #ff00aa
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    /* REMOVE blur shadows */
+    text-shadow: none;
+
+    animation: scrollText 18s linear infinite;
+}
+@keyframes scrollText{
+    from { transform: translateX(100%); }
+    to   { transform: translateX(-100%); }
+}
+
+/* mobile support */
+@media (max-width:600px){
+    .scroll-text{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-title">
+    <div class="scroll-text">
+        DNA Sequence Classification using Machine Learning and Deep Learning 
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<div class="box">
+    <h1>DNA Classification System</h1>
+
+    <a href="/register/"><button class="register-btn">Register</button></a>
+    <a href="/login/"><button class="login-btn">Login</button></a>
+</div>
+
+</body>
+</html>

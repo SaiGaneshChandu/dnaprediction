@@ -1,0 +1,413 @@
+[
+    {
+        "sno": 1,
+        "name": "Daddy",
+        "password": "1",
+        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAG",
+        "result": "chimpanzee",
+        "date": "24-Feb-2026 10:08 AM"
+    },
+    {
+        "sno": 2,
+        "name": "Daddy",
+        "password": "1",
+        "input": "1000364950.jpg",
+        "result": "human",
+        "date": "24-Feb-2026 10:10 AM"
+    },
+    {
+        "sno": 3,
+        "name": "bb",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "24-Feb-2026 05:24 PM"
+    },
+    {
+        "sno": 4,
+        "name": "bb",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "24-Feb-2026 05:25 PM"
+    },
+    {
+        "sno": 5,
+        "name": "ram",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "24-Feb-2026 05:35 PM"
+    },
+    {
+        "sno": 6,
+        "name": "ram",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "24-Feb-2026 05:35 PM"
+    },
+    {
+        "sno": 7,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "24-Feb-2026 05:35 PM"
+    },
+    {
+        "sno": 8,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "24-Feb-2026 05:40 PM"
+    },
+    {
+        "sno": 9,
+        "name": "Sai",
+        "password": "",
+        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAG",
+        "result": "chimpanzee",
+        "date": "25-Feb-2026 09:23 AM"
+    },
+    {
+        "sno": 10,
+        "name": "cc",
+        "password": "1",
+        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAG",
+        "result": "chimpanzee",
+        "date": "25-Feb-2026 02:38 PM"
+    },
+    {
+        "sno": 11,
+        "name": "dd",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "26-Feb-2026 11:00 AM"
+    },
+    {
+        "sno": 12,
+        "name": "dd",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "26-Feb-2026 11:00 AM"
+    },
+    {
+        "sno": 13,
+        "name": "dd",
+        "password": "1",
+        "input": "photo.jpeg",
+        "result": "rat",
+        "date": "26-Feb-2026 11:01 AM"
+    },
+    {
+        "sno": 14,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "26-Feb-2026 11:01 AM"
+    },
+    {
+        "sno": 15,
+        "name": "Sai",
+        "password": "",
+        "input": "fffffffffffffffffffff",
+        "result": "human",
+        "date": "26-Feb-2026 11:01 AM"
+    },
+    {
+        "sno": 16,
+        "name": "Sai",
+        "password": "",
+        "input": "qqq",
+        "result": "human",
+        "date": "26-Feb-2026 11:01 AM"
+    },
+    {
+        "sno": 17,
+        "name": "bb",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "26-Feb-2026 11:14 AM"
+    },
+    {
+        "sno": 18,
+        "name": "bb",
+        "password": "1",
+        "input": "ganesh.jpg",
+        "result": "human",
+        "date": "26-Feb-2026 11:17 AM"
+    },
+    {
+        "sno": 19,
+        "name": "bb",
+        "password": "1",
+        "input": "ganeshh.jpg",
+        "result": "human",
+        "date": "26-Feb-2026 11:17 AM"
+    },
+    {
+        "sno": 20,
+        "name": "bb",
+        "password": "1",
+        "input": "PS.jpg",
+        "result": "rat",
+        "date": "26-Feb-2026 11:17 AM"
+    },
+    {
+        "sno": 21,
+        "name": "bb",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA",
+        "result": "dog",
+        "date": "26-Feb-2026 11:19 AM"
+    },
+    {
+        "sno": 22,
+        "name": "bb",
+        "password": "1",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCT",
+        "result": "chimpanzee",
+        "date": "26-Feb-2026 11:19 AM"
+    },
+    {
+        "sno": 23,
+        "name": "bb",
+        "password": "1",
+        "input": "ATGCATCACCAAAGCGAATGGCTGCCTTAGGGACGGACAAAGAGCTGAGT",
+        "result": "human",
+        "date": "26-Feb-2026 11:19 AM"
+    },
+    {
+        "sno": 24,
+        "name": "bb",
+        "password": "1",
+        "input": "ganesh.jpg",
+        "result": "human",
+        "date": "26-Feb-2026 11:19 AM"
+    },
+    {
+        "sno": 25,
+        "name": "bb",
+        "password": "1",
+        "input": "photo.jpeg",
+        "result": "rat",
+        "date": "26-Feb-2026 11:19 AM"
+    },
+    {
+        "sno": 26,
+        "name": "bb",
+        "password": "1",
+        "input": "PS.jpg",
+        "result": "rat",
+        "date": "26-Feb-2026 11:21 AM"
+    },
+    {
+        "sno": 27,
+        "name": "bb",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "26-Feb-2026 11:23 AM"
+    },
+    {
+        "sno": 28,
+        "name": "bb",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "26-Feb-2026 11:23 AM"
+    },
+    {
+        "sno": 29,
+        "name": "bb",
+        "password": "1",
+        "input": "1.tif",
+        "result": "rat",
+        "date": "26-Feb-2026 11:25 AM"
+    },
+    {
+        "sno": 30,
+        "name": "bb",
+        "password": "1",
+        "input": "1.tif",
+        "result": "rat",
+        "date": "26-Feb-2026 11:25 AM"
+    },
+    {
+        "sno": 31,
+        "name": "bb",
+        "password": "1",
+        "input": "2.tif",
+        "result": "rat",
+        "date": "26-Feb-2026 11:25 AM"
+    },
+    {
+        "sno": 32,
+        "name": "Sai",
+        "password": "",
+        "input": "photo.jpeg",
+        "result": "rat",
+        "date": "26-Feb-2026 11:33 AM"
+    },
+    {
+        "sno": 33,
+        "name": "Sai",
+        "password": "",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCT",
+        "result": "chimpanzee",
+        "date": "26-Feb-2026 11:46 AM"
+    },
+    {
+        "sno": 34,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA...",
+        "result": "dog (100.0%)",
+        "confidence": "N/A",
+        "date": "26-Feb-2026 12:23 PM"
+    },
+    {
+        "sno": 35,
+        "name": "Sai",
+        "password": "",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCT...",
+        "result": "chimpanzee (100.0%)",
+        "confidence": "N/A",
+        "date": "26-Feb-2026 12:23 PM"
+    },
+    {
+        "sno": 36,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGA...",
+        "result": "dog (100.0%)",
+        "confidence": "N/A",
+        "date": "26-Feb-2026 12:27 PM"
+    },
+    {
+        "sno": 37,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGAGCCCGCCACCGACCTCAGCCGCTGGCGCCTGCGCTGCGAGCGGGGCCGGCAGACGTGGACGTACCTGGGGGCGGAGGAGGGCCCCGGCCGCGGGCAGACGGCGCTGGAGGCGCACTCCCTGGGCCTGGACACCGGGAGTTACTTCAAGGACTTGCCCAAAGCCGACACAGCCCGTGCCGCGGCTCTCAACGGGATCACGTTTTACGTGGGGCTGCAGGCTGAGGATGGGCACTGGGCCGGTGACTATGGCGGCCCACTCTTCCTCCTGCCAGGTCTGCTCATCACGTGCTACGTGGCACAGATCCCTCTGCCGGCTGGATATAGAGAAGAGATAGTGCGGTACCTGCGGTCCGTGCAGCTCCCTGATGGCGGCTGGGGCCTGCACGTGGAAGACAAGTCCACGGTGTTTGGGACCGCACTCAACTACGTGTCTCTAAGAATTCTGGGTGTTGGGCCTGACGATCCTGACTTGGTGCGAGCCCGGAACATTCTCCACGAGAAAGGCGGCGCCGTGGTCATCCCTTCCTGGGGGAAGTTCTGGTTGGCCGTCCTGAACGTTTACAGCTGGGAAGGCCTCAACACTCTGTTCCCGGAGATGTGGCTGCTTCCCACCTGGGCACCCGCGCACCCCTCCACGCTCTGGTGCCACTGCCGACAGGTCTACCTGCCCATGAGCTACTGCTACGCCACCCGGCTGACCGCCAAGGAGGACCCGCTGGTCCAGAGCCTCCGCCAGGAGCTCTACGTGGAGGACTACGCCGGCATCGACTGGCCGGCGCACAGGAGCAGCGTGGCCCCCGACGAGCTGTACACGCCGCACAGCTGGCTGCTCCGCGTGGTGTATGCGTTGCTCAACCTGTACGAGCGCCACCACAGCGCCAGCCTGCGCCAGCGGGCCGTCCAGAGGCTGTACGAGCACATCGCGGCGGACGACCGCTTCTCCAAGTGCATCAGCATCGGCCCGATCTCGAAGA",
+        "result": "dog (100.0%)",
+        "date": "26-Feb-2026 12:34 PM"
+    },
+    {
+        "sno": 38,
+        "name": "Sai",
+        "password": "",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCTACGACGCCCG...",
+        "result": "chimpanzee (100.0%)",
+        "date": "26-Feb-2026 12:37 PM"
+    },
+    {
+        "sno": 39,
+        "name": "Sai",
+        "password": "",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCTACGACGCCCG...",
+        "result": "chimpanzee (100.0%)",
+        "date": "26-Feb-2026 12:37 PM"
+    },
+    {
+        "sno": 40,
+        "name": "Sai",
+        "password": "",
+        "input": "CTAGTAGCTTCCATCGTCTTAGGTACGTTAGTTTATCGTCTACAAGAGCTACGACGCCCG...",
+        "result": "chimpanzee (100.0%)",
+        "date": "26-Feb-2026 12:39 PM"
+    },
+    {
+        "sno": 41,
+        "name": "Sai",
+        "password": "",
+        "input": "0ac747cd-ff32-49bf-bc1a-3e9b7702ce9c.png",
+        "result": "human (100.0%)",
+        "date": "26-Feb-2026 12:44 PM"
+    },
+    {
+        "sno": 42,
+        "name": "Sai",
+        "password": "",
+        "input": "1.tif",
+        "result": "rat (100.0%)",
+        "date": "26-Feb-2026 12:44 PM"
+    },
+    {
+        "sno": 43,
+        "name": "Sai",
+        "password": "",
+        "input": "101210OranePlt2_A01_w2_[036625F6-E762-45A6-A9D1-0C6640DC02BF].tif",
+        "result": "worm (85.0%)",
+        "date": "26-Feb-2026 12:45 PM"
+    },
+    {
+        "sno": 44,
+        "name": "dd",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGAGCCCGCCACCGACCTCAGCCGCTGGCGCCTGCGCTGCGAGCGGGGCCGGC...",
+        "result": "dog (100.0%)",
+        "date": "26-Feb-2026 12:48 PM"
+    },
+    {
+        "sno": 45,
+        "name": "dd",
+        "password": "1",
+        "input": "0b923ab7-ebff-4079-a4bb-af7da89f374e.png",
+        "result": "human (100.0%)",
+        "date": "26-Feb-2026 12:49 PM"
+    },
+    {
+        "sno": 46,
+        "name": "bb",
+        "password": "1",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGAGCCCGCCACCGACCTCAGCCGCTGGCGCCTGCGCTGCGAGCGGGGCCGGC...",
+        "result": "dog (100.0%)",
+        "date": "26-Feb-2026 01:02 PM"
+    },
+    {
+        "sno": 47,
+        "name": "bb",
+        "password": "1",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human (100.0%)",
+        "date": "26-Feb-2026 01:02 PM"
+    },
+    {
+        "sno": 48,
+        "name": "bb",
+        "password": "1",
+        "input": "1a27ebe9-93a1-4898-af69-f276057d4012.png",
+        "result": "human (100.0%)",
+        "date": "26-Feb-2026 01:05 PM"
+    },
+    {
+        "sno": 49,
+        "name": "bb",
+        "password": "1",
+        "input": "2fdbd9bc-bbaf-44c2-b40c-d193709639fa.png",
+        "result": "human",
+        "date": "26-Feb-2026 01:15 PM"
+    },
+    {
+        "sno": 50,
+        "name": "Sai",
+        "password": "",
+        "input": "00a02700-2ea2-4590-9e15-ffc9160fd3de.png",
+        "result": "human",
+        "date": "26-Feb-2026 01:16 PM"
+    },
+    {
+        "sno": 51,
+        "name": "Sai",
+        "password": "",
+        "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGAGCCCGCCACCGACCTCAGCCGCTGGCGCCTGCGCTGCGAGCGGGGCCGGC...",
+        "result": "dog",
+        "date": "26-Feb-2026 01:40 PM"
+    }
+]

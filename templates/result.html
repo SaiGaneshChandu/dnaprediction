@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #ff6b6b, #ff9a44, #ffd93d, #6bcB77, #4d96ff, #843bff);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
+            padding: 20px;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+
+        .error-box {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* ✅ CONDITIONAL BACK BUTTON */
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .back-to-prediction {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .back-to-home {
+            background: linear-gradient(135deg, #007bff, #28a745);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+
+        {% if error %}
+            <div class="result-card error-box">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        {% if ml_result %}
+            <div class="result-card">
+                <h2>DNA Classification</h2>
+                <p style="font-size: 24px; font-weight: bold; color: #28a745; margin: 10px 0;">
+                    {{ ml_result }}
+                </p>
+            </div>
+        {% endif %}
+
+        {% if dl_result %}
+            <div class="result-card">
+                <h2>Image Classification</h2>
+                <p style="font-size: 24px; font-weight: bold; color: #28a745; margin: 10px 0;">
+                    {{ dl_result }}
+                </p>
+            </div>
+        {% endif %}
+
+        <!-- ✅ ONLY BACK BUTTON LOGIC -->
+        {% if from_admin %}
+            <a href="/admin-dashboard/?section=predict" class="back-btn back-to-prediction">
+                ← Back to Prediction
+            </a>
+        {% else %}
+            <a href="/home/" class="back-btn back-to-home">
+                ← Back to Home
+            </a>
+        {% endif %}
+    </div>
+</body>
+</html>

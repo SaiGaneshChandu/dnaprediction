@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DNA Classification</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #ff6b6b, #4d96ff, #6bcb77);
+            background-size: 300% 300%;
+            animation: gradientMove 8s ease infinite;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 20px 30px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .home-btn { background: linear-gradient(135deg, #4d96ff, #3b82f6); }
+        .report-btn { background: linear-gradient(135deg, #10b981, #059669); }
+        .logout-btn { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            background: linear-gradient(90deg, #ff6b6b 0%, #4d96ff 50%, #6bcb77 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        
+        .welcome {
+            font-size: 20px;
+            color: #16a34a;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(22,163,74,0.3);
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(229,231,235,0.8);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4d96ff, #6bcb77);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        
+        .card h2 {
+            color: #1f2937;
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            font-weight: 700;
+            color: #374151;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .form-group input {
+            padding: 18px 22px;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4d96ff;
+            box-shadow: 0 0 0 4px rgba(77,150,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6b6b, #4d96ff);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(255,107,107,0.5);
+        }
+        
+        /* REPORTS */
+        .reports-section {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+        
+        .reports-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(107,114,128,0.4);
+        }
+        
+        .reports-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .reports-table th {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .reports-table td {
+            padding: 20px;
+            background: white;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+        
+        /* ✅ LIGHT BLUE HOVER EFFECT */
+        .reports-table tr:hover td {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe) !important;
+            box-shadow: inset 0 2px 8px rgba(59, 130, 246, 0.15);
+            transform: scale(1.01);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .result-badge {
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 15px;
+            display: inline-block;
+        }
+        
+        .result-positive {
+            background: linear-gradient(135deg, #fef2f2, #fecaca);
+            color: #dc2626;
+            border: 2px solid #fca5a5;
+            box-shadow: 0 4px 15px rgba(220,38,38,0.3);
+        }
+        
+        .result-negative {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            color: #16a34a;
+            border: 2px solid #86efac;
+            box-shadow: 0 4px 15px rgba(22,163,74,0.3);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+        
+        .empty-state h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 1024px) {
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding-top: 100px; }
+            .top-bar { 
+                padding: 15px 20px; 
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .btn { 
+                padding: 12px 20px; 
+                font-size: 14px; 
+            }
+            .container { 
+                margin: 10px 15px; 
+                padding: 30px 20px; 
+            }
+            h1 { font-size: 32px; }
+            .reports-table { font-size: 14px; }
+            .reports-table th, .reports-table td { padding: 15px 12px; }
+        }
+        
+        @media (max-width: 480px) {
+            .top-bar { justify-content: center; }
+            .reports-table th:nth-child(3), 
+            .reports-table td:nth-child(3) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP NAVIGATION -->
+    <div class="top-bar">
+        <a href="/home/" class="btn home-btn">🏠 Home</a>
+        <a href="?show=report" class="btn report-btn">📊 Reports</a>
+        <a href="/logout/" class="btn logout-btn">🚪 Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧬 DNA Classification</h1>
+            <p class="welcome">Welcome {{ user }}!</p>
+            <p class="subtitle">Machine Learning and Deep Learning Predictions</p>
+        </div>
+
+        {% if request.GET.show == "report" %}
+            <div class="reports-section card">
+                <div class="reports-header">
+                    <h2 style="margin: 0; color: #1f2937;">📊 Prediction Reports</h2>
+                    <a href="/home/" class="back-btn">🏠 Back to Home</a>
+                </div>
+                
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>User</th>
+                            <th>Input Preview</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in reports %}
+                        <tr>
+                            <td><strong style="color: #4d96ff;">{{ forloop.counter }}</strong></td>
+                            <td><strong>{{ r.name|default:"Anonymous" }}</strong></td>
+                            <td>{{ r.input|truncatechars:35|default:"Image upload" }}</td>
+                            <td>
+                                <span class="result-badge {% if r.result == 'Positive' %}result-positive{% else %}result-negative{% endif %}">
+                                    {% if r.result == 'Positive' %}⚠️ {{ r.result }}{% else %}✅ {{ r.result }}{% endif %}
+                                </span>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                <h3>✨ No Predictions Yet</h3>
+                                <p>Make your first DNA analysis using the forms below!</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="cards-grid">
+                <!-- DNA SEQUENCE FORM -->
+                <div class="card">
+                    <h2>🔬 DNA Sequence Analysis</h2>
+                    <form method="post" action="/predict/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>DNA Sequence (ATCG)</label>
+                            <input type="text" name="dna_text" placeholder="Enter ATCG sequence here..." maxlength="5000" required>
+                        </div>
+                        <button type="submit" class="submit-btn">🚀 Analyze Sequence</button>
+                    </form>
+                </div>
+
+                <!-- IMAGE UPLOAD FORM -->
+                <div class="card">
+                    <h2>🖼️ Image Classification</h2>
+                    <form method="post" action="/predict/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>DNA Microscope Image</label>
+                            <input type="file" name="image" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="submit-btn">🎯 Classify Image</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

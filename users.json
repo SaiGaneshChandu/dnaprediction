@@ -1,0 +1,24 @@
+{
+    "cc": {
+        "sno": 2,
+        "email": "cc@gmail.com",
+        "password": "1",
+        "role": "user"
+    },
+    "bb": {
+        "sno": 2,
+        "email": "bb@gmail.com",
+        "password": "1",
+        "role": "user"
+    },
+    "dd": {
+        "email": "dd@gmail.com",
+        "password": "1",
+        "role": "user"
+    },
+    "Rama": {
+        "email": "rama@gmail.com",
+        "password": "1",
+        "role": "user"
+    }
+}
