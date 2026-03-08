@@ -1,0 +1,9 @@
+Django
+gunicorn
+numpy
+pandas
+scikit-learn
+tensorflow
+pillow
+opencv-python
+joblib
