@@ -103,8 +103,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # ================= CSRF TRUST =================
 CSRF_TRUSTED_ORIGINS = [
-    "http://192.168.1.2",
+    "https://dnaprediction-app.onrender.com",
 ]
-
 # ================= WEBVIEW SUPPORT =================
 X_FRAME_OPTIONS = "ALLOWALL"
