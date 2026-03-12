@@ -448,15 +448,28 @@ showSection("{{ active_section|default:'home' }}");
   box-shadow: 0 12px 30px rgba(59,130,246,0.5);
 }
 </style>
-
 <div id="predict" class="section">
 <h3>🔬 Prediction</h3>
+
 <form method="POST" action="/predict/" enctype="multipart/form-data">
 {% csrf_token %}
+
+<!-- DNA Prediction -->
 <input type="text" name="dna_text" placeholder="Enter DNA sequence (ATCG)">
+<button class="submit-btn" type="submit">Predict DNA ➡️</button>
+
+<br><br>
+
+<h4 style="text-align:center;">OR</h4>
+
+<br>
+
+<!-- Image Prediction -->
 <input type="file" name="image" accept="image/*">
-<button class="submit-btn" type="submit">Predict Species ➡️</button>
+<button class="submit-btn" type="submit">Predict Image ➡️</button>
+
 </form>
+
 </div>
 <!-- Reports - UPDATED WITH INPUT DATA -->
 <style>

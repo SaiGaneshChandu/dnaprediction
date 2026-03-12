@@ -20,5 +20,10 @@
         "email": "rama@gmail.com",
         "password": "1",
         "role": "user"
+    },
+    "tt": {
+        "email": "tt@gmail.com",
+        "password": "1",
+        "role": "user"
     }
 }
