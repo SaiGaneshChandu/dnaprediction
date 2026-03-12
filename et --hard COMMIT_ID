@@ -1,0 +1,47 @@
+[33mcommit 51eff6d9e79943ff5ed085da7c46f58d274de1d5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 15:37:41 2026 +0530
+
+    fix static and csrf
+
+[33mcommit d09fd2cfdc7562b6d402d8b8d63e1bd4a43fe83c[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 11:45:46 2026 +0530
+
+    clean requirements
+
+[33mcommit 62eb0a4f671b673eb9b4a04870d5386994776182[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 11:42:49 2026 +0530
+
+    fix django version
+
+[33mcommit 14d7f5a426292abdffdcfc2d1eacc7491d9cc8fd[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 11:30:38 2026 +0530
+
+    fix contourpy version
+
+[33mcommit bc8a8c8c083352ff139981632f94442d582cff38[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 11:25:03 2026 +0530
+
+    added cors headers
+
+[33mcommit bbeb203d90cda0e2e5d1786d167bdb0c927801fa[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 11:02:39 2026 +0530
+
+    set python version
+
+[33mcommit 9ca6cdadd5b931898b3cbe5b98153bff9cf7ef79[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 10:50:57 2026 +0530
+
+    added requirements
+
+[33mcommit 8cbf502f7922c04027d523c5bb0bd27faea7dfab[m
+Author: SaiGaneshChandu <saiganeshchandu012@gmail.com>
+Date:   Sun Mar 8 10:29:24 2026 +0530
+
+    first commit
