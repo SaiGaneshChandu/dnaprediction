@@ -3,8 +3,8 @@ gunicorn
 django-cors-headers
 numpy
 pandas
-scikit-learn
-tensorflow
+scikit-learn==1.7.2
 pillow
-opencv-python
+opencv-python-headless
 joblib
+tensorflow-cpu
