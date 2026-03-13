@@ -349,8 +349,8 @@
                         {% for r in reports %}
                         <tr>
                             <td><strong style="color: #4d96ff;">{{ forloop.counter }}</strong></td>
-                            <td><strong>{{ r.name|default:"Anonymous" }}</strong></td>
-                            <td>{{ r.input|truncatechars:35|default:"Image upload" }}</td>
+                            <td><strong>{{ r.name }}</strong></td>
+                            <td>{{ r.input|truncatechars:35 }}</td>
                             <td>
                                 <span class="result-badge {% if r.result == 'Positive' %}result-positive{% else %}result-negative{% endif %}">
                                     {% if r.result == 'Positive' %}⚠️ {{ r.result }}{% else %}✅ {{ r.result }}{% endif %}

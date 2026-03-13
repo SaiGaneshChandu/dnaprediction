@@ -319,7 +319,6 @@ def home(request):
     })
 
 # ================= PREDICT =================
-# ================= PREDICT =================
 def predict(request):
     if not request.session.get("logged_user"):
         return redirect("/login/")
