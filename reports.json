@@ -401,18 +401,18 @@
     },
     {
         "sno": 51,
-        "name": "Rama",
-        "password": "1",
-        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAGAGAAAGTCGA...",
-        "result": "chimpanzee",
-        "date": "08-Mar-2026 10:18 AM"
+        "name": "Sai",
+        "password": "",
+        "input": "RSD IMAGE.jpg",
+        "result": "Rat",
+        "date": "07-Mar-2026 09:20 PM"
     },
     {
         "sno": 52,
-        "name": "Rama",
+        "name": "aa",
         "password": "1",
-        "input": "12.png",
-        "result": "Rat",
-        "date": "08-Mar-2026 10:18 AM"
+        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAGAGAAAGTCGA...",
+        "result": "chimpanzee",
+        "date": "13-Mar-2026 07:10 PM"
     }
 ]

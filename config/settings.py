@@ -88,7 +88,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
 # ================= CORS SETTINGS =================
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
@@ -104,7 +103,8 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # ================= CSRF TRUST =================
 CSRF_TRUSTED_ORIGINS = [
-    "https://dnaprediction-app.onrender.com",
+    "http://192.168.1.2",
 ]
+
 # ================= WEBVIEW SUPPORT =================
 X_FRAME_OPTIONS = "ALLOWALL"

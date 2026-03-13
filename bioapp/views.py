@@ -124,16 +124,16 @@ def validate_image_final(img_file):
         second_max = float(sorted_probs[1]) if len(sorted_probs) > 1 else 0
         
         if max_conf < 0.70:
-            return False, f"❌ Low confidence:"
+            return False, f"❌ Low confidence: {max_conf*100:.1f}% (min 70%)"
         
         confidence_gap = max_conf - second_max
         if confidence_gap < 0.20:
-            return False, f"❌ Uncertain:"
+            return False, f"❌ Uncertain: {confidence_gap*100:.1f}% gap too small"
 
         return True, (img, pred_class, f"{max_conf*100:.1f}%")
 
     except Exception as e:
-        return False, f"❌ Image error:"
+        return False, f"❌ Image error: {str(e)[:100]}"
 
 # ================= BASIC VIEWS =================
 def welcome(request):
