@@ -103,7 +103,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # ================= CSRF TRUST =================
 CSRF_TRUSTED_ORIGINS = [
-    "http://192.168.1.2",
+    "https://dnaprediction-production.up.railway.app",
 ]
 
 # ================= WEBVIEW SUPPORT =================
