@@ -5,7 +5,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <WebView
-        source={{ uri: "https://dnaprediction--projectk987.replit.app" }}
+        source={{ uri: "https://dnaprediction-production.up.railway.app/" }}
         startInLoadingState={true}
         javaScriptEnabled={true}
         domStorageEnabled={true}

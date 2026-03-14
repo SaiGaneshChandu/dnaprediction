@@ -30,7 +30,7 @@ body{
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.2);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* ✅ FIXED - This prevents inputs going outside */
 }
 
 .box::before {
@@ -68,31 +68,36 @@ h2{
     z-index: 2;
 }
 
+/* ✅ FIXED - Simplified input styling */
 .row input{
     width: 100%;
+    max-width: 100%; /* ✅ Prevents overflow */
     padding: 16px 20px;
-    border-radius: 15px;
-    border: 2px solid transparent;
+    border-radius: 12px; /* ✅ Reduced from 15px */
+    border: 2px solid #e2e8f0; /* ✅ Solid border instead of border-image */
     font-size: 16px;
-    background: linear-gradient(135deg, white, #f8fafc);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* ✅ CRITICAL - Includes padding in width */
     position: relative;
     z-index: 2;
 }
 
-.username-input {
-    border-image: linear-gradient(90deg, #ff9ff3, #feca57) 1;
+/* ✅ REMOVED conflicting border-image classes */
+.username-input:focus {
+    border-color: #ff9ff3;
+    box-shadow: 0 0 0 3px rgba(255,159,243,0.2);
+    transform: translateY(-2px);
 }
 
-.password-input {
-    border-image: linear-gradient(90deg, #54a0ff, #43e97b) 1;
+.password-input:focus {
+    border-color: #43e97b;
+    box-shadow: 0 0 0 3px rgba(67,233,123,0.2);
+    transform: translateY(-2px);
 }
 
 .row input:focus{
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(24,144,255,0.4);
-    border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
     outline: none;
 }
 
@@ -104,7 +109,7 @@ button{
     color: white;
     font-size: 18px;
     font-weight: 700;
-    border-radius: 15px;
+    border-radius: 12px; /* ✅ Matching input radius */
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(102,126,234,0.4);
     transition: all 0.4s ease;
@@ -131,7 +136,6 @@ button:hover{
     box-shadow: 0 5px 15px rgba(255,107,107,0.3);
 }
 
-/* ✅ FIXED - SIMPLE TEXT LINK (NO BOX) */
 .register-link {
     text-align: center;
     margin-top: 20px;
@@ -187,6 +191,10 @@ button:hover{
         padding: 14px;
         font-size: 16px;
     }
+    
+    .row input {
+        padding: 14px 16px;
+    }
 }
 </style>
 </head>
@@ -213,7 +221,6 @@ button:hover{
     <button type="submit">🚀 Login</button>
     </form>
 
-    <!-- ✅ NO BOX - SIMPLE RED LINK -->
     <div class="register-link">
         New user? <a href="/register/">Register Now</a>
     </div>
