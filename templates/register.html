@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
     margin:0;
@@ -11,7 +12,18 @@ body{
     animation: bgMove 15s ease infinite;
     min-height: 100vh;
 }
+img{
+max-width:100%;
+height:auto;
+}
 
+@media (max-width:768px){
+
+input,button{
+width:100%;
+}
+
+}
 @keyframes bgMove{
     0% { background-position: 0% 50%; }
     25% { background-position: 50% 100%; }

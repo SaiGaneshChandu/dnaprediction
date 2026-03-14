@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Prediction Result</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
@@ -11,6 +12,18 @@
             animation: gradientMove 18s ease infinite;
             padding: 20px;
         }
+        img{
+max-width:100%;
+height:auto;
+}
+
+@media (max-width:768px){
+
+input,button{
+width:100%;
+}
+
+}
 
         @keyframes gradientMove {
             0% { background-position: 0% 50%; }
