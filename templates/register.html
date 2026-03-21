@@ -2,14 +2,25 @@
 <html>
 <head>
 <title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body{
-    margin:0;
+    margin: 0;
+    padding: 0;
     font-family:'Segoe UI', sans-serif;
     background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #43e97b, #fa709a, #feb41c);
     background-size: 600% 600%;
     animation: bgMove 15s ease infinite;
     min-height: 100vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow-x: hidden;
 }
 
 @keyframes bgMove{
@@ -20,9 +31,19 @@ body{
     100% { background-position: 0% 50%; }
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
 .box{
     width: 380px;
-    margin: 50px auto;
+    max-width: 95vw;
+    margin: 0 auto !important;
     padding: 25px;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(15px);
@@ -57,7 +78,6 @@ h2{
     backdrop-filter: blur(10px);
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.05), 0 4px 15px rgba(0,0,0,0.08);
     transition: all 0.4s ease;
-    box-sizing: border-box;
 }
 
 .username-input { 
@@ -153,18 +173,18 @@ button:hover{
     transform: translateY(-3px);
 }
 
-/* ✅ ENHANCED Mobile Responsive - Perfect mobile display (same as login) */
+/* Mobile perfect center */
 @media (max-width: 768px) {
     body {
-        padding: 0 10px;
+        padding: 10px !important;
     }
     
-    .box{
+    .box {
         width: 100%;
-        max-width: 380px;
-        margin: 20px auto;
+        max-width: 400px;
         padding: 30px 25px;
         border-radius: 18px;
+        margin: 0 auto !important;
     }
     
     h2 {
@@ -174,76 +194,32 @@ button:hover{
     
     .row input {
         padding: 18px 20px;
-        font-size: 18px; /* ✅ Touch-friendly */
+        font-size: 18px;
         margin-bottom: 12px;
     }
     
     button {
         padding: 18px;
-        font-size: 18px; /* ✅ Touch-friendly */
+        font-size: 18px;
         margin-top: 15px;
-    }
-    
-    .login-link {
-        margin-top: 25px;
-    }
-    
-    .login-link a {
-        font-size: 17px;
-        padding: 12px 20px;
-    }
-    
-    .home-btn {
-        padding: 15px 35px;
-        font-size: 16px;
     }
 }
 
-/* ✅ Extra small screens (phones < 480px) */
 @media (max-width: 480px) {
     .box {
-        margin: 15px auto;
         padding: 25px 20px;
         border-radius: 15px;
+        margin: 10px auto !important;
     }
     
     h2 {
         font-size: 22px;
     }
-    
-    .row input,
-    button {
-        padding: 20px;
-        font-size: 18px; /* ✅ Perfect touch size */
-    }
-    
-    .error {
-        padding: 15px;
-        font-size: 16px;
-    }
-}
-
-/* ✅ Landscape mobile fix */
-@media (max-height: 500px) and (orientation: landscape) {
-    .box {
-        margin: 10px auto;
-        padding: 20px;
-    }
-    
-    h2 {
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-    
-    .row input,
-    button {
-        padding: 15px;
-    }
 }
 </style>
 </head>
 <body>
-
+<div class="container">
 <div class="box">
     <h2>📝 Register</h2>
 
@@ -280,6 +256,7 @@ button:hover{
     <div style="text-align: center; margin-top: 15px;">
         <a href="/" class="home-btn">🏠 Home</a>
     </div>
+</div>
 </div>
 
 <script>
