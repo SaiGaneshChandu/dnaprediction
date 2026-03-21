@@ -30,7 +30,7 @@ body{
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.2);
     position: relative;
-    overflow: hidden; /* ✅ FIXED - This prevents inputs going outside */
+    overflow: hidden;
 }
 
 .box::before {
@@ -68,23 +68,21 @@ h2{
     z-index: 2;
 }
 
-/* ✅ FIXED - Simplified input styling */
 .row input{
     width: 100%;
-    max-width: 100%; /* ✅ Prevents overflow */
+    max-width: 100%;
     padding: 16px 20px;
-    border-radius: 12px; /* ✅ Reduced from 15px */
-    border: 2px solid #e2e8f0; /* ✅ Solid border instead of border-image */
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
     font-size: 16px;
     background: #ffffff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
-    box-sizing: border-box; /* ✅ CRITICAL - Includes padding in width */
+    box-sizing: border-box;
     position: relative;
     z-index: 2;
 }
 
-/* ✅ REMOVED conflicting border-image classes */
 .username-input:focus {
     border-color: #ff9ff3;
     box-shadow: 0 0 0 3px rgba(255,159,243,0.2);
@@ -109,7 +107,7 @@ button{
     color: white;
     font-size: 18px;
     font-weight: 700;
-    border-radius: 12px; /* ✅ Matching input radius */
+    border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(102,126,234,0.4);
     transition: all 0.4s ease;
@@ -175,25 +173,91 @@ button:hover{
     box-shadow: 0 10px 25px rgba(168,237,234,0.6);
 }
 
-/* Mobile Responsive */
-@media (max-width:600px){
+/* ✅ ENHANCED Mobile Responsive - Perfect mobile display */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+    
     .box{
-        width: 95%;
-        margin: 40px 10px;
-        padding: 30px 20px;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 30px 25px;
+        border-radius: 20px;
     }
     
     h2 {
-        font-size: 26px;
-    }
-    
-    button {
-        padding: 14px;
-        font-size: 16px;
+        font-size: 28px;
+        margin-bottom: 25px;
     }
     
     .row input {
-        padding: 14px 16px;
+        padding: 18px 20px;
+        font-size: 18px; /* ✅ Touch-friendly */
+        margin-bottom: 15px;
+    }
+    
+    button {
+        padding: 18px;
+        font-size: 18px; /* ✅ Touch-friendly */
+        margin-top: 15px;
+    }
+    
+    .register-link {
+        margin-top: 25px;
+    }
+    
+    .register-link a {
+        font-size: 17px;
+        padding: 12px 20px;
+    }
+    
+    .home-btn {
+        padding: 15px 35px;
+        font-size: 16px;
+    }
+}
+
+/* ✅ Extra small screens (phones < 480px) */
+@media (max-width: 480px) {
+    .box {
+        margin: 15px auto;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    .row input,
+    button {
+        padding: 20px;
+        font-size: 18px; /* ✅ Perfect touch size */
+    }
+    
+    .error {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* ✅ Landscape mobile fix */
+@media (max-height: 500px) and (orientation: landscape) {
+    .box {
+        margin: 10px auto;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .row input,
+    button {
+        padding: 15px;
     }
 }
 </style>

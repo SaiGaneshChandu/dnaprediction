@@ -153,9 +153,92 @@ button:hover{
     transform: translateY(-3px);
 }
 
-@media (max-width:600px){
-    .box{ width: 95%; margin: 40px 10px; padding: 30px 20px; }
-    h2 { font-size: 26px; }
+/* ✅ ENHANCED Mobile Responsive - Perfect mobile display (same as login) */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+    
+    .box{
+        width: 100%;
+        max-width: 380px;
+        margin: 20px auto;
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .row input {
+        padding: 18px 20px;
+        font-size: 18px; /* ✅ Touch-friendly */
+        margin-bottom: 12px;
+    }
+    
+    button {
+        padding: 18px;
+        font-size: 18px; /* ✅ Touch-friendly */
+        margin-top: 15px;
+    }
+    
+    .login-link {
+        margin-top: 25px;
+    }
+    
+    .login-link a {
+        font-size: 17px;
+        padding: 12px 20px;
+    }
+    
+    .home-btn {
+        padding: 15px 35px;
+        font-size: 16px;
+    }
+}
+
+/* ✅ Extra small screens (phones < 480px) */
+@media (max-width: 480px) {
+    .box {
+        margin: 15px auto;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    .row input,
+    button {
+        padding: 20px;
+        font-size: 18px; /* ✅ Perfect touch size */
+    }
+    
+    .error {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* ✅ Landscape mobile fix */
+@media (max-height: 500px) and (orientation: landscape) {
+    .box {
+        margin: 10px auto;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .row input,
+    button {
+        padding: 15px;
+    }
 }
 </style>
 </head>
