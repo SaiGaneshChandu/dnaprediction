@@ -2,14 +2,20 @@
 <html>
 <head>
 <title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
 body{
     margin:0;
+    padding:0;
     font-family:'Segoe UI', sans-serif;
     background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #43e97b, #fa709a, #feb41c);
     background-size: 600% 600%;
     animation: bgMove 15s ease infinite;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* ✅ No horizontal scroll */
 }
 
 @keyframes bgMove{
@@ -22,7 +28,8 @@ body{
 
 .box{
     width: 420px;
-    margin: 80px auto;
+    max-width: 95vw; /* ✅ Perfect mobile fit */
+    margin: 0 auto;
     padding: 40px;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
@@ -31,6 +38,7 @@ body{
     border: 1px solid rgba(255,255,255,0.2);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .box::before {
@@ -173,16 +181,18 @@ button:hover{
     box-shadow: 0 10px 25px rgba(168,237,234,0.6);
 }
 
-/* ✅ ENHANCED Mobile Responsive - Perfect mobile display */
+/* ✅ PERFECT MOBILE CENTER - Link/App lo center raa */
 @media (max-width: 768px) {
     body {
-        padding: 0 10px;
+        padding: 10px;
+        justify-content: center !important;
+        align-items: center !important;
     }
     
     .box{
         width: 100%;
-        max-width: 400px;
-        margin: 20px auto;
+        max-width: 95vw;
+        margin: 20px auto !important;
         padding: 30px 25px;
         border-radius: 20px;
     }
@@ -194,13 +204,13 @@ button:hover{
     
     .row input {
         padding: 18px 20px;
-        font-size: 18px; /* ✅ Touch-friendly */
+        font-size: 18px;
         margin-bottom: 15px;
     }
     
     button {
         padding: 18px;
-        font-size: 18px; /* ✅ Touch-friendly */
+        font-size: 18px;
         margin-top: 15px;
     }
     
@@ -212,17 +222,11 @@ button:hover{
         font-size: 17px;
         padding: 12px 20px;
     }
-    
-    .home-btn {
-        padding: 15px 35px;
-        font-size: 16px;
-    }
 }
 
-/* ✅ Extra small screens (phones < 480px) */
 @media (max-width: 480px) {
     .box {
-        margin: 15px auto;
+        margin: 15px auto !important;
         padding: 25px 20px;
         border-radius: 15px;
     }
@@ -234,30 +238,7 @@ button:hover{
     .row input,
     button {
         padding: 20px;
-        font-size: 18px; /* ✅ Perfect touch size */
-    }
-    
-    .error {
-        padding: 15px;
-        font-size: 16px;
-    }
-}
-
-/* ✅ Landscape mobile fix */
-@media (max-height: 500px) and (orientation: landscape) {
-    .box {
-        margin: 10px auto;
-        padding: 20px;
-    }
-    
-    h2 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    
-    .row input,
-    button {
-        padding: 15px;
+        font-size: 18px;
     }
 }
 </style>
