@@ -25,5 +25,10 @@
         "email": "tt@gmail.com",
         "password": "1",
         "role": "user"
+    },
+    "SaiGaneshChandu": {
+        "email": "saiganeshchandu012@gmail.com",
+        "password": "sai12345",
+        "role": "user"
     }
 }

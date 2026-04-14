@@ -409,5 +409,77 @@
         "input": "ATGACGGAGGGCACGTGCCTGCGTCGCCGGGGCGGCCCCTGGAAGACCGAGCCCGCCACCGACCTCAGCCGCTGGCGCCTGCGCTGCGAGCGGGGCCGGC...",
         "result": "dog",
         "date": "26-Feb-2026 01:40 PM"
+    },
+    {
+        "sno": 52,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "GCAGGATCGACGGCGCTTGGGCTGACTGATGGGGATAGGTGCAGTAAGAGAGAAAGTCGA...",
+        "result": "chimpanzee",
+        "date": "21-Mar-2026 06:56 PM"
+    },
+    {
+        "sno": 53,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "1.tif",
+        "result": "Rat",
+        "date": "21-Mar-2026 06:57 PM"
+    },
+    {
+        "sno": 54,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "Screenshot 2025-11-24 104516.png",
+        "result": "Rat",
+        "date": "21-Mar-2026 07:13 PM"
+    },
+    {
+        "sno": 55,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "signature_under_150kb.jpg",
+        "result": "Worm",
+        "date": "21-Mar-2026 07:13 PM"
+    },
+    {
+        "sno": 56,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "Screenshot (4).png",
+        "result": "Human",
+        "date": "21-Mar-2026 07:14 PM"
+    },
+    {
+        "sno": 57,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "photo_100kb.jpg",
+        "result": "Rat",
+        "date": "21-Mar-2026 07:14 PM"
+    },
+    {
+        "sno": 58,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "RSD IMAGE.jpg",
+        "result": "Rat",
+        "date": "21-Mar-2026 07:14 PM"
+    },
+    {
+        "sno": 59,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "ChatGPT Image Feb 9, 2026, 05_54_08 PM (1).png",
+        "result": "Worm",
+        "date": "21-Mar-2026 07:15 PM"
+    },
+    {
+        "sno": 60,
+        "name": "SaiGaneshChandu",
+        "password": "sai12345",
+        "input": "rsd sign.jpg",
+        "result": "Worm",
+        "date": "21-Mar-2026 07:15 PM"
     }
 ]
