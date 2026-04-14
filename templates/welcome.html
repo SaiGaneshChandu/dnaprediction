@@ -1,131 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>DNA Classification System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DNA Classification System</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family:Segoe UI;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:url("https://img.freepik.com/premium-photo/biotechnology-dna-structure-human-cell-biology-dna-strands-molecular-structure-science-background-3d-illustration_1962-2806.jpg?w=1380") no-repeat center center/cover;
-}
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("https://img.freepik.com/premium-photo/biotechnology-dna-structure-human-cell-biology-dna-strands-molecular-structure-science-background-3d-illustration_1962-2806.jpg?w=1380") no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* dark overlay */
-.overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.55);
-}
+        /* Dark Overlay */
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.58);
+            z-index: 1;
+        }
 
-/* center box */
-.box{
-    position:relative;
-    z-index:1;
-    background:rgba(255,255,255,0.95);
-    padding:40px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 15px 35px rgba(0,0,0,0.4);
-}
+        /* Scrolling Title */
+        .scroll-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 12px 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+        }
 
-h1{
-    margin-bottom:25px;
-}
+        .scroll-text {
+            display: inline-block;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(
+                90deg,
+                #ff0000, #ff7a00, #ffd000, #00c853, 
+                #00b0ff, #2962ff, #7b1fa2, #ff00aa
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: scrollText 22s linear infinite;
+            padding-left: 100%; /* Start from right */
+        }
 
-/* buttons */
-button{
-    width:180px;
-    padding:12px;
-    margin:10px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    color:white;
-    transition:0.3s;
-}
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(-100%); }
+        }
 
-.login-btn{background:linear-gradient(135deg,#4d96ff,#6bcB77);}
-.register-btn{background:linear-gradient(135deg,#ff6b6b,#ff9a44);}
+        /* Center Box */
+        .box {
+            position: relative;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 45px 35px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+            max-width: 380px;
+            width: 90%;
+        }
 
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 18px rgba(0,0,0,0.3);
-}
+        h1 {
+            font-size: 32px;
+            margin-bottom: 35px;
+            color: #1f2937;
+            font-weight: 800;
+        }
 
-/* ===== SCROLLING TITLE ===== */
-.scroll-title{
-    position:absolute;
-    top:10px;
-    width:100%;
-    overflow:hidden;
-    white-space:nowrap;
-    padding:10px 0;
-}
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            min-height: 58px; /* Better touch target */
+        }
 
-.scroll-text{
-    display:inline-block;
+        .register-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff9a44);
+        }
 
-    font-size:60px;
-    font-weight:900;
-    letter-spacing:4px;
+        .login-btn {
+            background: linear-gradient(135deg, #4d96ff, #10b981);
+        }
 
-    /* clean colorful gradient */
-    background: linear-gradient(
-        90deg,
-        #ff0000,
-        #ff7a00,
-        #ffd000,
-        #00c853,
-        #00b0ff,
-        #2962ff,
-        #7b1fa2,
-        #ff00aa
-    );
+        .btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+        /* Mobile Optimizations */
+        @media (max-width: 600px) {
+            .scroll-text {
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+            
+            .box {
+                padding: 35px 25px;
+                border-radius: 20px;
+                max-width: 92%;
+            }
+            
+            h1 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            
+            .btn {
+                font-size: 16.5px;
+                padding: 15px 20px;
+            }
+        }
 
-    /* REMOVE blur shadows */
-    text-shadow: none;
-
-    animation: scrollText 18s linear infinite;
-}
-@keyframes scrollText{
-    from { transform: translateX(100%); }
-    to   { transform: translateX(-100%); }
-}
-
-/* mobile support */
-@media (max-width:600px){
-    .scroll-text{
-        font-size:28px;
-    }
-}
-</style>
+        @media (max-width: 380px) {
+            .scroll-text {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="scroll-title">
-    <div class="scroll-text">
-        DNA Sequence Classification using Machine Learning and Deep Learning 
+    <!-- Scrolling Title -->
+    <div class="scroll-title">
+        <div class="scroll-text">
+            DNA Sequence Classification using Machine Learning &amp; Deep Learning 
+        </div>
     </div>
-</div>
 
-<div class="overlay"></div>
+    <div class="overlay"></div>
 
-<div class="box">
-    <h1>DNA Classification System</h1>
-
-    <a href="/register/"><button class="register-btn">Register</button></a>
-    <a href="/login/"><button class="login-btn">Login</button></a>
-</div>
+    <!-- Main Login/Register Box -->
+    <div class="box">
+        <h1>🧬 DNA Classification System</h1>
+        
+        <a href="/register/">
+            <button class="btn register-btn">Register</button>
+        </a>
+        
+        <a href="/login/">
+            <button class="btn login-btn">Login</button>
+        </a>
+    </div>
 
 </body>
 </html>
